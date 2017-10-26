@@ -1,5 +1,23 @@
-<h1>New Location</h1>
+<div class="jumbotron text-center">
+  <h1>Atlanta MTA Buses</h1>
+</div>
 
-<%= render 'form', location: @location %>
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3
+    col-sm-8 col-sm-offset-2
+    col-xs-10-offset-1">
+    <h3 class="text-center">
 
-<%= link_to 'Back', locations_path %>
+      Give us your address or street corner, and we'll let you know if there's a bus nearby!
+
+      </h3>
+      <%= render 'form', location: @location %>
+
+    </div>
+  </div>
+</div>
+
+
+
+

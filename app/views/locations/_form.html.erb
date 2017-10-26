@@ -11,17 +11,17 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :street_address %>
-    <%= form.text_field :street_address, id: :location_street_address %>
+  <div class="field form-group">
+    <%= form.label "Address", class: 'h3' %>
+    <%= form.text_field :street_address, id: :location_street_address, class: 'form-control' %>
   </div>
 
-  <div class="field">
-    <%= form.label :city %>
-    <%= form.text_field :city, id: :location_city %>
+  <div class="field form-group">
+    <%= form.label :city, class: 'h3' %>
+    <%= form.text_field :city, id: :location_city, class: 'form-control' %>
   </div>
 
-  <div class="actions">
-    <%= form.submit %>
+  <div class="actions form-group">
+    <%= form.submit "Find my Bus!", class: 'btn btn-warning btn-lg' %>
   </div>
 <% end %>
