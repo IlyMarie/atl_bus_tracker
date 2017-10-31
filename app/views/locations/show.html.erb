@@ -1,12 +1,11 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Buses, at your Service!</h1>
+<h1>Here Are Your Buses</h1>
 
-<h3 class="text-muted">Current Location</h3>
+<h3 class="text-muted">Your current location</h3>
 
 <p class="text-muted">
-  <%= @location.full_street_address %> <small><%= link_to fa_icon('pencil', text: "Edit"), edit_location_path(@location) %></small>
-
+  <%= @location.full_street_address %> <small><%= link_to fa_icon('pencil', text: 'Edit'), edit_location_path(@location) %></small>
 </p>
 
 <div id="map-canvas"></div>
@@ -22,14 +21,13 @@
 
 <% if @buses.empty? %>
   <h3>
-    Not really that close. Consider other options like ride a bike, uber or call a friend, or <%= link_to 'change your location', edit_location_path(@location) %>.
+    Not really that close. Time to walk, bike, taxi, uber, frolic, or <%= link_to 'change your location', edit_location_path(@location) %>.
   </h3>
-  <% end %>
+<% end %>
 
-  <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['
-  google_maps_api_key'] %>"></script>
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['google_maps_api_key'] %>"></script>
 
- <script type="text/javascript">
+<script>
   function initialize() {
     var myLocation = new google.maps.LatLng(<%= @location.latitude %>, <%= @location.longitude %>);
 
@@ -37,6 +35,7 @@
       center: myLocation,
       zoom: 15
     };
+
     var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
 
     var personIcon = "<%= image_path 'man_icon.png' %>";
@@ -60,12 +59,13 @@
         animation: google.maps.Animation.DROP,
         title: bus['VEHICLE']
       });
+
       var contentString =
         `<div id="content">
-        <h2>Bus ${bus['VEHICLE']} - ${bus['DIRECTION']}</h2>
-        <div id="bodyContent">
-        <p>Next Stop: ${bus['TIMEPOINT']}</p>
-        </div>
+          <h2>Bus: ${bus['VEHICLE']} - ${bus['DIRECTION']}</h2>
+          <div id="bodyContent">
+            <p>Next Stop: ${bus['TIMEPOINT']}</p>
+          </div>
         </div>`;
 
       var infoWindow = new google.maps.InfoWindow({
@@ -78,6 +78,8 @@
     });
   }
 
- google.maps.event.addDomListener(window, 'load', initialize);
+  google.maps.event.addDomListener(window, 'load', initialize);
 </script>
+
+
 
